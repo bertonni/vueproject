@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h1>Hello, Counter</h1>
+    <h1>Counter: {{value}}</h1>
   </div>
 </template>
 
 <script>
   export default {
-  
+    name: 'Counter',
+    props: {
+      value: Number,
+    }
   }
 </script>
 
