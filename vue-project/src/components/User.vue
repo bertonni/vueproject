@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import Counter from '../components/Counter.vue';
+  import Counter from './Counter.vue';
   import { mapState } from 'vuex';
 
   export default {
