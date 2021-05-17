@@ -5,6 +5,7 @@ export default createStore({
     counter: 0,
     username: '<Your Name>',
     addTask: false,
+    finishedTasks: 0,
     colors: ['#A16AE8', '#9C2D41', '#055C9D', '#003060', '#18A558', '#746C70'],
     todoList: JSON.parse(localStorage.getItem('todoList')) ?? [],
   },
@@ -28,6 +29,8 @@ export default createStore({
     },
     setFinishTask(state, index) {
       state.todoList[index].isFinished = !state.todoList[index].isFinished;
+      if (state.todoList[index].isFinished) state.finishedTasks++;
+      else state.finishedTasks--;
       localStorage.setItem('todoList', JSON.stringify(state.todoList));
     },
     setNewTask(state, task) {

@@ -72,6 +72,7 @@ export default {
   cursor: default;
   border-left: 6px solid transparent;
   margin: 0.7rem 0;
+  min-width: 150px;
 }
 
 .task-container:hover {
@@ -142,5 +143,17 @@ svg:hover {
 
 .remove:hover {
   opacity: 0.8;
+}
+
+@media only screen and (min-width: 560px) {
+  .task-container {
+    width: 380px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .task-container {
+    width: 500px;
+  }
 }
 </style>
