@@ -1,5 +1,6 @@
 <template>
   <div ref="container" class="main container">
+    <Header />
     <div class="show-task-content" v-if="todoList.length === 0">
       <h1>Your Tasks</h1>
       <p>It seems you don't have any tasks</p>
@@ -23,13 +24,11 @@
 import { mapState } from "vuex";
 import { PlusIcon } from "@heroicons/vue/solid";
 import Task from "@/components/Task.vue";
-import CreateTask from "../components/CreateTask.vue";
+import Header from "@/components/Header.vue";
+import CreateTask from "@/components/CreateTask.vue";
 // @ is an alias to /src
 
 export default {
-  created() {
-
-  },
   mounted() {
     let index = 0;
     let lastIndex = 0;
@@ -50,6 +49,7 @@ export default {
   name: "Home",
   components: {
     Task,
+    Header,
     PlusIcon,
     CreateTask,
   },
