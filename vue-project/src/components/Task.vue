@@ -1,16 +1,16 @@
 <template>
-  <div class="task-container" :class="task.isFinished ? 'finished' : ''">
-    <h3 :class="task.isFinished ? 'finished' : ''">{{ task.title }}</h3>
-    <div class="task-content">
-      <CheckCircleIcon class="check-icon"
-        :class="task.isFinished ? 'task-finished' : ''"
+  <div class="w-11/12 md:w-9/12 bg-white bg-opacity-30 rounded-tr rounded-br pt-1 pb-1 transition pl-4 cursor-default border-l-6 border-transparent my-3 min-w-36 hover:bg-opacity-40 hover:duration-300 hover:opacity-80" :class="task.isFinished ? 'line-through opacity-50' : ''">
+    <h3 :class="task.isFinished ? 'line-through opacity-50 font-medium text-lg' : 'font-medium text-lg'">{{ task.title }}</h3>
+    <div class="flex items-center pt-1 px-1 gap-2 group">
+      <CheckCircleIcon class="h-8 w-8 cursor-pointer min-w-8"
+        :class="task.isFinished ? 'opacity-50' : ''"
         @click="finishTask(id)"
       />
-      <p class="task-description" :class="task.isFinished ? 'finished' : ''">
+      <p class="group-hover:whitespace-normal flex-grow-2 truncate" :title=task.description :class="task.isFinished ? 'line-through opacity-50' : ''">
         {{ task.description }}
       </p>
       <span></span>
-      <div class="remove" @click="removeTask(id)">
+      <div class="text-white cursor-pointer hover:opacity-80 mr-4" @click="removeTask(id)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -60,100 +60,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-.task-container {
-  /* background-color: var(--baby-blue); */
-  background-color: rgba(255, 255, 255, 0.3);
-  width: 90%;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  padding: 0.3rem 0 0.2rem 1rem;
-  cursor: default;
-  border-left: 6px solid transparent;
-  margin: 0.7rem 0;
-  min-width: 150px;
-}
-
-.task-container:hover {
-  border-left-color: rgba(255, 255, 255, 0.4);
-  transition: 0.3s;
-  opacity: 0.8;
-}
-
-.task-content {
-  display: flex;
-  align-items: center;
-  padding: 0.3rem 0.3rem 0.3rem 0;
-  gap: 0.5rem;
-}
-
-.task-description {
-  flex-grow: 2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* text-align: justify; */
-}
-
-.task-description:hover {
-  white-space: inherit;
-}
-
-.finished-description {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.check-icon,
-svg {
-  height: 2.1rem;
-  width: 2.1rem;
-  cursor: pointer;
-}
-
-.check-icon:hover,
-svg:hover {
-  opacity: 0.7;
-}
-
-.check-icon {
-  min-width: 2.1rem;
-}
-
-.remove {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.finished {
-  text-decoration: line-through;
-  /* color: #125926; */
-  opacity: 0.5;
-}
-
-.task-finished {
-  /* color: #125926; */
-  opacity: 0.5;
-}
-
-.finished-bg {
-  background-color: #6fc086;
-}
-
-.remove:hover {
-  opacity: 0.8;
-}
-
-@media only screen and (min-width: 560px) {
-  .task-container {
-    width: 380px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .task-container {
-    width: 500px;
-  }
-}
-</style>

@@ -1,10 +1,11 @@
 <template>
-  <div class="add-task-content">
-    <h1>Add Task</h1>
+  <div class="w-11/12 sm:w-8/12 max-w-lg min-h-36 flex flex-col items-center pt-4 mt-32 transition duration-1500 rounded animate-fadein-up bg-white text-gray-500 z-50 absolute"
+  >
+    <h1 class="text-2xl sm:text-3xl font-bold sm:mb-4">Add Task</h1>
     <br />
     <form action="#">
       <div class="form-group">
-        <label for="title" :class="moveTitle ? 'toUp' : 'toInitial'"
+        <label for="title" :class="moveTitle ? 'font-medium text-lg sm:text-xl transition duration-300 transform-gpu -translate-y-full cursor-default' : 'transition duration-300 transform-gpu translate-y-0 font-normal text-left'"
           >Title</label
         >
         <input
@@ -12,12 +13,12 @@
           id="title"
           ref="title"
           autocomplete="off"
-          class="input"
+          class="w-full border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus:outline-none focus:border-blue-500 transition duration-500"
           v-on="{ focus: addTitleClass, blur: removeTitleClass }"
         />
       </div>
       <div class="form-group">
-        <label for="description" :class="moveDescription ? 'toUp' : 'toInitial'"
+        <label for="description" :class="moveDescription ? 'font-medium text-lg sm:text-xl transition duration-300 transform-gpu -translate-y-full cursor-default' : 'transition duration-300 transform-gpu translate-y-0 font-normal text-left'"
           >Description</label
         >
         <input
@@ -25,33 +26,29 @@
           id="description"
           ref="description"
           autocomplete="off"
-          class="input"
+          class="border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus: outline-none focus:border-blue-500 transition duration-500"
           v-on="{ focus: addDescriptionClass, blur: removeDescriptionClass }"
         />
       </div>
-      <div class="form-group options">
-        <a href="#" @click.prevent="handleSubmit">Save</a>
-        <a href="#" @click.prevent="closeModal">Close</a>
+      <div class="form-group flex items-center justify-center gap-4">
+        <a href="#" @click.prevent="handleSubmit" class="py-1 px-2 text-lg font-medium text-gray-500">Save</a>
+        <a href="#" @click.prevent="closeModal" class="py-1 px-2 text-lg font-medium text-gray-500">Close</a>
       </div>
     </form>
-    <div class="error" v-if="errors.length > 0">
-      <ul>
-        <li v-for="error of errors" :key="error">{{ error }}</li>
+    <div class="message bg-red-300" v-if="errors.length > 0">
+      <ul class="list-none">
+        <li class="font-medium text-red-600" v-for="error of errors" :key="error">{{ error }}</li>
       </ul>
-      <span class="close" @click="errors = []">
-        x
-      </span>
+      <span class="text-red-600 absolute top-1 right-3 cursor-pointer" @click="errors = []"> x </span>
     </div>
-    <div class="success" v-if="success">
-      <ul>
-        <li>Task added successfully</li>
+    <div class="message bg-green-300" v-if="success">
+      <ul class="list-none">
+        <li class="font-medium text-green-600">Task added successfully</li>
       </ul>
-      <span class="close-success" @click="success = false">
-        x
-      </span>
+      <span class="text-green-600 absolute top-1 right-3 cursor-pointer" @click="success=false"> x </span>
     </div>
   </div>
-  <div class="overlay-home" @click="closeModal" />
+  <div class="bg-black bg-opacity-50 fixed h-screen w-full z-30 top-0 left-0" @click="closeModal" />
 </template>
 
 <script>
@@ -91,10 +88,11 @@ export default {
 
       if (title.length === 0 || description.length === 0) {
         this.success = false;
-        if (title.length === 0) this.errors[0] = 'Title must be filled';
-        else this.errors[0] = '';
-        if (description.length === 0) this.errors[1] = ('Description must be filled');
-        else this.errors[1] = '';
+        if (title.length === 0) this.errors[0] = "Title must be filled in";
+        else this.errors[0] = "";
+        if (description.length === 0)
+          this.errors[1] = "Description must be filled in";
+        else this.errors[1] = "";
         return;
       }
       this.errors = [];
@@ -127,97 +125,6 @@ export default {
       this.$store.commit("setAddTask");
     },
   },
-  components: {
-  },
+  components: {},
 };
 </script>
-
-<style scoped>
-.form-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.form-group:nth-child(2) {
-  margin-top: 2rem;
-}
-
-label {
-  position: absolute;
-  font-weight: 400;
-  margin-right: 1.6rem;
-  cursor: text;
-}
-
-.options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.options > a {
-  padding: 0.2rem 0.6rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--gray-text);
-}
-
-.options > a:hover {
-  opacity: 0.5;
-}
-
-.error, .success {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  width: 60%;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  position: relative;
-  animation: fadeInUp var(--animation-time) forwards;
-}
-
-.error {
-  background: #F88379;
-}
-
-.success {
-  background: #67bf7b;
-}
-
-.close, .close-success {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.close {
-  color: #D2042D;
-}
-
-.close-success {
-  color: #125926;
-}
-
-.error ul, .success ul {
-  list-style: none;
-}
-
-.error ul li {
-  color: #D2042D;
-  font-weight: 500;
-}
-
-.success ul li {
-  color: #125926;
-  font-weight: 500;
-}
-</style>

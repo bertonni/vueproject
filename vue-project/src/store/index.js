@@ -3,6 +3,7 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     addTask: false,
+    closeMod: false,
     finishedTasks: localStorage['finishedTasks'] ?? 0,
     colors: ['#A16AE8', '#9C2D41', '#055C9D', '#003060', '#18A558', '#746C70'],
     todoList: JSON.parse(localStorage.getItem('todoList')) ?? [],
@@ -10,6 +11,7 @@ export default createStore({
   mutations: {
     setAddTask(state) {
       state.addTask = !state.addTask;
+      state.closeMod = !state.addTask;
     },
     setClearStorage(state) {
       state.todoList = [];
