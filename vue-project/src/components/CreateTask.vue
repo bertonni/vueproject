@@ -1,49 +1,47 @@
 <template>
-  <div class="w-11/12 sm:w-8/12 max-w-lg min-h-36 flex flex-col items-center pt-4 mt-32 transition duration-1500 rounded animate-fadein-up bg-white text-gray-500 z-50 absolute"
+  <div class="w-11/12 sm:w-9/12 max-w-lg min-h-36 flex flex-col items-center pt-4 mt-32 transition duration-1500 rounded animate-fadein-up bg-white text-gray-500 z-50 absolute"
   >
-    <h1 class="text-2xl sm:text-3xl font-bold sm:mb-4">Add Task</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold sm:mb-3">Add Task</h1>
     <br />
-    <form action="#">
+    <form action="#" class="w-10/12">
       <div class="form-group">
         <label for="title" :class="moveTitle ? 'font-medium text-lg sm:text-xl transition duration-300 transform-gpu -translate-y-full cursor-default' : 'transition duration-300 transform-gpu translate-y-0 font-normal text-left'"
-          >Title</label
-        >
+          >Title</label>
         <input
           type="text"
           id="title"
           ref="title"
           autocomplete="off"
-          class="w-full border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus:outline-none focus:border-blue-500 transition duration-500"
+          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus:outline-none focus:border-blue-500 transition duration-500"
           v-on="{ focus: addTitleClass, blur: removeTitleClass }"
         />
       </div>
       <div class="form-group">
         <label for="description" :class="moveDescription ? 'font-medium text-lg sm:text-xl transition duration-300 transform-gpu -translate-y-full cursor-default' : 'transition duration-300 transform-gpu translate-y-0 font-normal text-left'"
-          >Description</label
-        >
+          >Description</label>
         <input
           type="text"
           id="description"
           ref="description"
           autocomplete="off"
-          class="border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus: outline-none focus:border-blue-500 transition duration-500"
+          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus: outline-none focus:border-blue-500 transition duration-500"
           v-on="{ focus: addDescriptionClass, blur: removeDescriptionClass }"
         />
       </div>
       <div class="form-group flex items-center justify-center gap-4">
-        <a href="#" @click.prevent="handleSubmit" class="py-1 px-2 text-lg font-medium text-gray-500">Save</a>
-        <a href="#" @click.prevent="closeModal" class="py-1 px-2 text-lg font-medium text-gray-500">Close</a>
+        <a href="#" @click.prevent="handleSubmit" class="py-1 px-2 text-lg font-medium text-gray-500 hover:opacity-60">Save</a>
+        <a href="#" @click.prevent="closeModal" class="py-1 px-2 text-lg font-medium text-gray-500 hover:opacity-60">Close</a>
       </div>
     </form>
-    <div class="message bg-red-300" v-if="errors.length > 0">
+    <div class="message w-9/12 bg-red-300" v-if="errors.length > 0">
       <ul class="list-none">
-        <li class="font-medium text-red-600" v-for="error of errors" :key="error">{{ error }}</li>
+        <li class="text-sm font-medium text-red-600" v-for="error of errors" :key="error">{{ error }}</li>
       </ul>
       <span class="text-red-600 absolute top-1 right-3 cursor-pointer" @click="errors = []"> x </span>
     </div>
-    <div class="message bg-green-300" v-if="success">
+    <div class="message w-9/12 bg-green-300" v-if="success">
       <ul class="list-none">
-        <li class="font-medium text-green-600">Task added successfully</li>
+        <li class="text-sm font-medium text-green-600">Task added successfully</li>
       </ul>
       <span class="text-green-600 absolute top-1 right-3 cursor-pointer" @click="success=false"> x </span>
     </div>

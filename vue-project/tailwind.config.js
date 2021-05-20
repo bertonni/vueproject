@@ -13,6 +13,9 @@ module.exports = {
           'to': { opacity: '0', transform: 'translate3d(0,0,0)'},
         }
       },
+      screens: {
+        'xs': '480px',
+      },
       animation: {
         'fadein-up': 'fadeInUp 0.3s forwards ease',
         'hide-down': 'hideDown 0.3s forwards ease',
