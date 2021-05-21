@@ -12,7 +12,7 @@
           id="title"
           ref="title"
           autocomplete="off"
-          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus:outline-none focus:border-blue-500 transition duration-500"
+          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus:outline-none focus:border-blue-500 transition duration-500 z-30"
           v-on="{ focus: addTitleClass, blur: removeTitleClass }"
         />
       </div>
@@ -24,7 +24,7 @@
           id="description"
           ref="description"
           autocomplete="off"
-          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus: outline-none focus:border-blue-500 transition duration-500"
+          class="w-full xs:mx-auto xs:w-10/12 border-b-2 border-gray-400 min-h-8 text-base bg-transparent focus: outline-none focus:border-blue-500 transition duration-500 z-30"
           v-on="{ focus: addDescriptionClass, blur: removeDescriptionClass }"
         />
       </div>

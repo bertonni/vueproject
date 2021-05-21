@@ -6,7 +6,7 @@
         :class="task.isFinished ? 'opacity-50' : ''"
         @click="finishTask(id)"
       />
-      <p class="group-hover:whitespace-normal flex-grow-2 truncate" :title=task.description :class="task.isFinished ? 'line-through opacity-50' : ''">
+      <p class="hover:whitespace-normal flex-grow-2 sm:truncate" :title=task.description :class="task.isFinished ? 'line-through opacity-50' : ''">
         {{ task.description }}
       </p>
       <span></span>

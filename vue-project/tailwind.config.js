@@ -109,7 +109,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      whitespace: ['hover'],
+    },
   },
   plugins: [],
 }

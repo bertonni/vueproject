@@ -19,7 +19,7 @@
     @apply mt-8;
   }
   label {
-    @apply absolute font-normal cursor-text text-sm sm:text-base xs:left-8;
+    @apply absolute font-normal cursor-text text-sm sm:text-base xs:left-8 z-0;
   }
   .message {
     @apply flex flex-col items-center justify-center h-20 w-3/5 rounded mb-4 relative animate-fadein-up;
