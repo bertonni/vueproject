@@ -16,7 +16,7 @@
       </div>
     </div>
     <CreateTask v-if="addTask" />
-    <button @click="toggleModal" class="flex items-center justify-center w-11/12 sm:w-9/12 max-w-2xl bg-white bg-opacity-10 border-2 border-dashed border-black border-opacity-10 rounded cursor-pointer text-xl font-medium h-12 mt-4 text-white hover:bg-opacity-20"><PlusIcon class="h-6 w-6"/> Add Task</button>
+    <button @click="toggleModal" class="flex items-center justify-center w-11/12 sm:w-9/12 max-w-2xl bg-white bg-opacity-10 border-2 border-dashed border-black border-opacity-10 rounded cursor-pointer text-xl font-medium h-12 sm:h-14 mt-4 text-white hover:bg-opacity-20 mb-4"><PlusIcon class="h-6 w-6"/> Add Task</button>
   </div>
 </template>
 
