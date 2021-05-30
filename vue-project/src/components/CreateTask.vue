@@ -1,5 +1,7 @@
 <template>
-  <div class="w-11/12 sm:w-9/12 max-w-lg min-h-36 flex flex-col items-center pt-4 mt-32 transition duration-1500 rounded animate-fadein-up bg-white text-gray-500 z-50 absolute"
+  <div class="w-11/12 sm:w-9/12 max-w-lg min-h-36 flex flex-col items-center 
+  pt-4 mt-32 transition duration-1500 rounded animate-fadein-up bg-white 
+  text-gray-500 z-50 absolute"
   >
     <h1 class="text-2xl sm:text-3xl font-bold sm:mb-3">Add Task</h1>
     <br />
@@ -29,8 +31,14 @@
         />
       </div>
       <div class="form-group flex items-center justify-center gap-4">
-        <a href="#" @click.prevent="handleSubmit" class="py-1 px-2 text-lg font-medium text-gray-500 hover:opacity-60">Save</a>
-        <a href="#" @click.prevent="closeModal" class="py-1 px-2 text-lg font-medium text-gray-500 hover:opacity-60">Close</a>
+        <button
+          type="submit" 
+          @click.prevent="handleSubmit" 
+          class="py-1 px-4 text-lg font-medium hover:opacity-60
+          bg-green-600 text-white rounded">
+          Save
+        </button>
+        <a href="#" @click.prevent="closeModal" class="py-1 px-4 text-lg font-medium text-gray-500 hover:opacity-60 hover:underline">Close</a>
       </div>
     </form>
     <div class="message w-9/12 bg-red-300" v-if="errors.length > 0">
@@ -95,10 +103,17 @@ export default {
       }
       this.errors = [];
       this.success = true;
+
+      const today = new Date();
+
+      const date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+
       const task = {
         title: title,
         description: description,
         isFinished: false,
+        createdAt: date,
+        priority: 5
       };
       this.$store.commit("setNewTask", task);
       this.clearForm();

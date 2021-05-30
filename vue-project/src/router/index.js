@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import NotFound from '../components/NotFound.vue';
+import TaskView from '../views/TaskView.vue';
 
 const routes = [
   {
@@ -10,7 +11,8 @@ const routes = [
   {
     path: '/task/:id',
     name: 'TaskView',
-    component: () => import(/* webpackChunkName: "home" */ '../views/TaskView.vue')
+    component: TaskView,
+    props: true,
   },
   {
     path: "/:catchAll(.*)",

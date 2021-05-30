@@ -15,6 +15,10 @@ module.exports = {
           'from': { opacity: '0', transform: 'translate3d(-100%, 0, 0)' },
           'to': { opacity: '1', transform: 'none' },
         },
+        fadeInLeft: {
+          'from': { opacity: '0', transform: 'translate3d(100%, 0, 0)' },
+          'to': { opacity: '1', transform: 'none' },
+        },
         hideDown: {
           'from': { opacity: '1', transform: 'none' },
           'to': { opacity: '0', transform: 'translate3d(0,0,0)' },
@@ -32,6 +36,7 @@ module.exports = {
       animation: {
         'fadein-up': 'fadeInUp 0.3s forwards ease',
         'fadein-right': 'fadeInRight 0.3s forwards ease',
+        'fadein-left': 'fadeInLeft 0.3s forwards ease',
         'fadein-right-2': 'fadeInRight 0.3s forwards 0.2s ease',
         'fadein-right-3': 'fadeInRight 0.3s forwards 0.4s ease',
         'fadein-right-4': 'fadeInRight 0.3s forwards 0.6s ease',
@@ -130,6 +135,7 @@ module.exports = {
   variants: {
     extend: {
       whitespace: ['hover', 'group-hover'],
+      display: ['hover', 'group-hover']
     },
   },
   plugins: [],
