@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply font-roboto;
+    @apply font-roboto bg-black bg-cube;
   }
   ::-webkit-scrollbar {
     width: 0px; 
@@ -24,4 +24,4 @@
   .message {
     @apply flex flex-col items-center justify-center h-20 w-3/5 rounded mb-4 relative animate-fadein-up;
   }
-} 
+}

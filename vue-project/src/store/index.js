@@ -5,7 +5,9 @@ export default createStore({
     addTask: false,
     closeMod: false,
     finishedTasks: localStorage['finishedTasks'] ?? 0,
-    colors: ['#A16AE8', '#9C2D41', '#055C9D', '#003060', '#18A558', '#746C70'],
+    colors: ['rgba(161, 106, 232, 0.8)', 'rgba(156, 45, 65, 0.8)', 
+    'rgba(5, 92, 157, 0.8)', 'rgba(0, 48, 96, 0.8)', 'rgba(24, 165, 88, 0.8)', 
+    'rgba(116, 108, 112, 0.8)'],
     todoList: JSON.parse(localStorage.getItem('todoList')) ?? [],
   },
   mutations: {

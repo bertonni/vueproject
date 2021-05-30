@@ -3,21 +3,39 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: theme => ({
+        'cube': "url('/images/cube2.png')",
+      }),
       keyframes: {
         fadeInUp: {
           'from': { opacity: '0', transform: 'translate3d(0, 100%, 0)' },
           'to': { opacity: '1', transform: 'none' },
         },
+        fadeInRight: {
+          'from': { opacity: '0', transform: 'translate3d(-100%, 0, 0)' },
+          'to': { opacity: '1', transform: 'none' },
+        },
         hideDown: {
-          'from': { opacity: '1', transform: 'none'},
-          'to': { opacity: '0', transform: 'translate3d(0,0,0)'},
+          'from': { opacity: '1', transform: 'none' },
+          'to': { opacity: '0', transform: 'translate3d(0,0,0)' },
         }
       },
       screens: {
         'xs': '480px',
       },
+      transitionDelay: {
+        '600': '600ms',
+        '900': '900ms',
+        '1200': '1200ms',
+        '1500': '1500ms',
+      },
       animation: {
         'fadein-up': 'fadeInUp 0.3s forwards ease',
+        'fadein-right': 'fadeInRight 0.3s forwards ease',
+        'fadein-right-2': 'fadeInRight 0.3s forwards 0.2s ease',
+        'fadein-right-3': 'fadeInRight 0.3s forwards 0.4s ease',
+        'fadein-right-4': 'fadeInRight 0.3s forwards 0.6s ease',
+        'fadein-right-5': 'fadeInRight 0.3s forwards 0.8s ease',
         'hide-down': 'hideDown 0.3s forwards ease',
       },
       fontFamily: {
@@ -29,6 +47,7 @@ module.exports = {
       transitionDuration: {
         '1500': '1500ms',
         '3500': '3500ms',
+        '4500': '4500ms',
       },
       flexGrow: {
         '2': 2,
@@ -110,7 +129,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      whitespace: ['hover'],
+      whitespace: ['hover', 'group-hover'],
     },
   },
   plugins: [],

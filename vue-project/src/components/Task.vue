@@ -1,16 +1,28 @@
 <template>
-  <div class="w-11/12 md:w-9/12 bg-white bg-opacity-30 rounded-tr rounded-br pt-1 pb-1 transition pl-4 cursor-default border-l-6 border-transparent my-3 min-w-36 hover:bg-opacity-40 hover:duration-300 hover:opacity-80" :class="task.isFinished ? 'line-through opacity-50' : ''">
-    <h3 :class="task.isFinished ? 'line-through opacity-50 font-medium text-lg' : 'font-medium text-lg'">{{ task.title }}</h3>
-    <div class="flex items-center pt-1 px-1 gap-2 group">
+  <div
+    class="w-11/12 md:w-9/12 bg-white bg-opacity-30 rounded-tr rounded-br 
+    pt-1 pb-1 pl-4cursor-default border-l-6 border-transparent my-3 min-w-36 
+    hover:bg-opacity-40 hover:duration-300 hover:opacity-80 opacity-0 group
+    cursor-pointer"
+    :class="[this.task.isFinished ? 'line-through' : '', this.id > 0 
+    && this.id < 5 ? this.delays[this.id-1] : 'animate-fadein-right']"
+    >
+    <h3
+    class="ml-2 font-medium text-lg"
+    :class="task.isFinished ? 'line-through opacity-50' 
+    : ''">{{ task.title }}</h3>
+    <div class="flex items-center pt-1 px-1 gap-2">
       <CheckCircleIcon class="h-8 w-8 cursor-pointer min-w-8"
         :class="task.isFinished ? 'opacity-50' : ''"
         @click="finishTask(id)"
       />
-      <p class="hover:whitespace-normal flex-grow-2 sm:truncate" :title=task.description :class="task.isFinished ? 'line-through opacity-50' : ''">
+      <p class="group-hover:whitespace-normal flex-grow-2 sm:truncate" 
+        :title=task.description :class="task.isFinished ? 
+        'line-through opacity-50' : ''">
         {{ task.description }}
       </p>
-      <span></span>
-      <div class="text-white cursor-pointer hover:opacity-80 mr-4" @click="removeTask(id)">
+      <div class="text-white cursor-pointer hover:opacity-80 mr-2" 
+      @click="removeTask(id)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -35,9 +47,21 @@
 import { CheckCircleIcon } from "@heroicons/vue/solid";
 export default {
   name: "Task",
+  data() {
+    return {
+      delays: [
+        'animate-fadein-right-2',
+        'animate-fadein-right-3',
+        'animate-fadein-right-4',
+        'animate-fadein-right-5',
+      ],
+    }
+  },
   props: {
     task: Object,
     id: Number,
+  },
+  computed: {
   },
   methods: {
     getFormattedDate(date) {
